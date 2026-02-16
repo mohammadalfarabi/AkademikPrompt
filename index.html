@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             scroll-behavior: smooth;
@@ -17,7 +18,7 @@
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
-        
+
         .tab-content {
             display: none;
         }
@@ -52,6 +53,7 @@
         }
     </style>
 </head>
+
 <body class="bg-slate-50 text-slate-800">
 
     <!-- Navigasi -->
@@ -63,17 +65,24 @@
                         <i class="fas fa-graduation-cap text-white text-xl"></i>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-xl font-bold text-slate-900 leading-none">Akademik<span class="text-blue-600">Prompt</span></span>
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">AI Library for Students</span>
+                        <span class="text-xl font-bold text-slate-900 leading-none">Akademik<span
+                                class="text-blue-600">Prompt</span></span>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">AI Library for
+                            Students</span>
                     </div>
                 </div>
 
                 <div class="hidden md:flex items-center gap-8 font-semibold text-sm">
-                    <button onclick="switchTab('library')" class="nav-link text-blue-600" id="nav-library">Beranda</button>
-                    <button onclick="switchTab('contributors')" class="nav-link text-slate-600 hover:text-blue-600" id="nav-contributors">Kontributor</button>
-                    <button onclick="showModal('Panduan AI', 'Gunakan prompt di ChatGPT/Gemini. Masukkan teks tugas Anda di bagian yang ditandai kurung siku [ ].')" class="text-slate-600 hover:text-blue-600">Panduan</button>
+                    <button onclick="switchTab('library')" class="nav-link text-blue-600"
+                        id="nav-library">Beranda</button>
+                    <button onclick="switchTab('contributors')" class="nav-link text-slate-600 hover:text-blue-600"
+                        id="nav-contributors">Kontributor</button>
+                    <button
+                        onclick="showModal('Panduan AI', 'Gunakan prompt di ChatGPT/Gemini. Masukkan teks tugas Anda di bagian yang ditandai kurung siku [ ].')"
+                        class="text-slate-600 hover:text-blue-600">Panduan</button>
                     <div class="h-6 w-px bg-slate-200"></div>
-                    <button onclick="document.getElementById('content-start').scrollIntoView()" class="bg-slate-900 text-white px-6 py-2.5 rounded-full hover:bg-slate-800 transition-all">Mulai</button>
+                    <button onclick="document.getElementById('content-start').scrollIntoView()"
+                        class="bg-slate-900 text-white px-6 py-2.5 rounded-full hover:bg-slate-800 transition-all">Mulai</button>
                 </div>
 
                 <button class="md:hidden text-slate-600 text-2xl" onclick="toggleMenu()">
@@ -85,37 +94,46 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-6 py-8 space-y-4">
-        <button onclick="switchTab('library'); toggleMenu()" class="block w-full text-left font-bold py-2">Beranda</button>
-        <button onclick="switchTab('contributors'); toggleMenu()" class="block w-full text-left font-bold py-2">Kontributor</button>
-        <button onclick="toggleMenu()" class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold">Mulai Sekarang</button>
+        <button onclick="switchTab('library'); toggleMenu()"
+            class="block w-full text-left font-bold py-2">Beranda</button>
+        <button onclick="switchTab('contributors'); toggleMenu()"
+            class="block w-full text-left font-bold py-2">Kontributor</button>
+        <button onclick="toggleMenu()" class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold">Mulai
+            Sekarang</button>
     </div>
 
     <!-- Hero Section -->
     <section class="pt-20 pb-16 px-4">
         <div class="max-w-4xl mx-auto text-center">
-            <div id="hero-badge" class="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-bold mb-6 border border-blue-100 uppercase tracking-wider">
+            <div id="hero-badge"
+                class="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-bold mb-6 border border-blue-100 uppercase tracking-wider">
                 <i class="fas fa-users"></i> Komunitas Akademik
             </div>
-            <h1 id="hero-title" class="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight mb-6 leading-tight">
+            <h1 id="hero-title"
+                class="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight mb-6 leading-tight">
                 Optimalkan Studimu dengan <br><span class="text-blue-600">Prompt AI Terbaik.</span>
             </h1>
             <p id="hero-desc" class="text-lg text-slate-600 max-w-2xl mx-auto mb-12 leading-relaxed">
-                Perpustakaan prompt terbaik untuk membantu tugas kuliah, riset skripsi, hingga persiapan karir profesional.
+                Perpustakaan prompt terbaik untuk membantu tugas kuliah, riset skripsi, hingga persiapan karir
+                profesional.
             </p>
 
             <div id="search-container" class="max-w-2xl mx-auto relative">
                 <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                <input type="text" id="search-input" onkeyup="filterPrompts()" placeholder="Cari prompt (misal: 'skripsi')..." class="w-full pl-14 pr-6 py-5 bg-white border border-slate-200 rounded-2xl shadow-xl shadow-slate-200/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 text-lg font-medium transition-all">
+                <input type="text" id="search-input" onkeyup="filterPrompts()"
+                    placeholder="Cari prompt (misal: 'skripsi')..."
+                    class="w-full pl-14 pr-6 py-5 bg-white border border-slate-200 rounded-2xl shadow-xl shadow-slate-200/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 text-lg font-medium transition-all">
             </div>
         </div>
     </section>
 
     <!-- Content Area -->
     <main id="content-start" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        
+
         <!-- Tab Library -->
         <div id="tab-library" class="tab-content active">
-            <div class="flex flex-wrap gap-2 justify-center mb-16 overflow-x-auto no-scrollbar pb-2" id="category-filters">
+            <div class="flex flex-wrap gap-2 justify-center mb-16 overflow-x-auto no-scrollbar pb-2"
+                id="category-filters">
                 <!-- Categories injected by JS -->
             </div>
             <div id="prompt-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -127,17 +145,26 @@
         <div id="tab-contributors" class="tab-content">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                 <div class="bg-white p-6 rounded-3xl border border-slate-200 text-center">
-                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4"><i class="fas fa-star"></i></div>
+                    <div
+                        class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-star"></i>
+                    </div>
                     <h4 class="font-bold">Biasa</h4>
                     <p class="text-xs text-slate-500 mt-1">1-5 Kontribusi Prompt</p>
                 </div>
                 <div class="bg-white p-6 rounded-3xl border border-slate-200 text-center">
-                    <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mx-auto mb-4"><i class="fas fa-award"></i></div>
+                    <div
+                        class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-award"></i>
+                    </div>
                     <h4 class="font-bold">Hebat</h4>
                     <p class="text-xs text-slate-500 mt-1">Lebih dari 5 Prompt</p>
                 </div>
                 <div class="bg-white p-6 rounded-3xl border border-slate-200 text-center">
-                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mx-auto mb-4"><i class="fas fa-terminal"></i></div>
+                    <div
+                        class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-terminal"></i>
+                    </div>
                     <h4 class="font-bold">Super</h4>
                     <p class="text-xs text-slate-500 mt-1">Prompt + Kontribusi Kode</p>
                 </div>
@@ -148,12 +175,20 @@
             </div>
 
             <div class="mt-20 bg-blue-600 rounded-[2.5rem] p-12 text-center text-white relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-10 opacity-10 rotate-12 scale-150"><i class="fas fa-rocket text-9xl"></i></div>
+                <div class="absolute top-0 right-0 p-10 opacity-10 rotate-12 scale-150"><i
+                        class="fas fa-rocket text-9xl"></i></div>
                 <h3 class="text-3xl font-black mb-4">Ingin Namamu Ada di Sini?</h3>
-                <p class="text-blue-100 mb-10 max-w-xl mx-auto text-lg leading-relaxed">Bantu sesama mahasiswa dengan mengirimkan prompt buatanmu atau berkontribusi pada pengembangan website ini.</p>
+                <p class="text-blue-100 mb-10 max-w-xl mx-auto text-lg leading-relaxed">Bantu sesama mahasiswa dengan
+                    mengirimkan prompt buatanmu atau berkontribusi pada pengembangan website ini.</p>
                 <div class="flex flex-wrap justify-center gap-4 relative z-10">
-                    <button onclick="showModal('Kirim Prompt', 'Email ke: gua@alfarabi.my.id dengan format Nama - Koleksi Prompt.')" class="bg-white text-blue-600 px-10 py-4 rounded-2xl font-bold hover:bg-blue-50 transition-all shadow-xl">Sumbang Prompt</button>
-                    <button onclick="showModal('Bantu Coding', 'Repository GitHub tersedia untuk kolaborasi teknis. Hubungi admin untuk akses PR.')" class="bg-blue-700 text-white px-10 py-4 rounded-2xl font-bold hover:bg-blue-800 transition-all flex items-center gap-3"><i class="fab fa-github"></i> Kontribusi Kode</button>
+                    <button
+                        onclick="showModal('Kirim Prompt', 'Email ke: gua@alfarabi.my.id dengan format Nama - Koleksi Prompt.')"
+                        class="bg-white text-blue-600 px-10 py-4 rounded-2xl font-bold hover:bg-blue-50 transition-all shadow-xl">Sumbang
+                        Prompt</button>
+                    <button
+                        onclick="showModal('Bantu Coding', 'Repository GitHub tersedia untuk kolaborasi teknis. Hubungi admin untuk akses PR.')"
+                        class="bg-blue-700 text-white px-10 py-4 rounded-2xl font-bold hover:bg-blue-800 transition-all flex items-center gap-3"><i
+                            class="fab fa-github"></i> Kontribusi Kode</button>
                 </div>
             </div>
         </div>
@@ -166,31 +201,41 @@
                 <div class="bg-blue-600 p-2 rounded-lg"><i class="fas fa-graduation-cap text-white"></i></div>
                 <span class="text-2xl font-bold">Akademik<span class="text-blue-600">Prompt</span></span>
             </div>
-            <p class="text-slate-500 text-sm max-w-md mx-auto mb-8">Platform prompt AI akademik terlengkap di Indonesia. Dibuat oleh mahasiswa, untuk mahasiswa.</p>
+            <p class="text-slate-500 text-sm max-w-md mx-auto mb-8">Platform prompt AI akademik terlengkap di Indonesia.
+                Dibuat oleh mahasiswa, untuk mahasiswa.</p>
             <div class="flex justify-center gap-6 mb-12 text-slate-400">
                 <a href="#" class="hover:text-blue-600 transition-colors text-xl"><i class="fab fa-twitter"></i></a>
-                <a href="https://instagram.com/al.frabi.s" class="hover:text-blue-600 transition-colors text-xl"><i class="fab fa-instagram"></i></a>
-                <a href="https://github.com/mohammadalfarabi" class="hover:text-blue-600 transition-colors text-xl"><i class="fab fa-github"></i></a>
+                <a href="https://instagram.com/al.frabi.s" class="hover:text-blue-600 transition-colors text-xl"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://github.com/mohammadalfarabi" class="hover:text-blue-600 transition-colors text-xl"><i
+                        class="fab fa-github"></i></a>
             </div>
-            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">© 2025 Al Farabi • Build with Community</p>
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">© 2025 Al Farabi • Build with
+                Community</p>
         </div>
     </footer>
 
     <!-- Modal System -->
-    <div id="modal-overlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-[2rem] max-w-md w-full p-10 shadow-2xl scale-95 transition-transform duration-300" id="modal-box">
+    <div id="modal-overlay"
+        class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-[2rem] max-w-md w-full p-10 shadow-2xl scale-95 transition-transform duration-300"
+            id="modal-box">
             <div class="flex justify-between items-start mb-6">
                 <div class="bg-blue-50 p-4 rounded-2xl text-blue-600"><i class="fas fa-info-circle text-2xl"></i></div>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 text-2xl"><i class="fas fa-times"></i></button>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 text-2xl"><i
+                        class="fas fa-times"></i></button>
             </div>
             <h3 id="modal-title" class="text-2xl font-black mb-4 tracking-tight">Judul Modal</h3>
-            <p id="modal-message" class="text-slate-600 leading-relaxed mb-8 text-lg">Pesan modal akan muncul di sini.</p>
-            <button onclick="closeModal()" class="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-blue-600 transition-all">Tutup</button>
+            <p id="modal-message" class="text-slate-600 leading-relaxed mb-8 text-lg">Pesan modal akan muncul di sini.
+            </p>
+            <button onclick="closeModal()"
+                class="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-blue-600 transition-all">Tutup</button>
         </div>
     </div>
 
     <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[200] opacity-0 translate-y-10 transition-all flex items-center gap-4 pointer-events-none">
+    <div id="toast"
+        class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[200] opacity-0 translate-y-10 transition-all flex items-center gap-4 pointer-events-none">
         <i class="fas fa-check-circle text-emerald-400"></i>
         <span class="font-bold">Prompt berhasil disalin!</span>
     </div>
@@ -201,7 +246,27 @@
             { id: 2, title: "Parafrase Akademik", cat: "Menulis", icon: "pen", desc: "Mengubah kalimat informal menjadi gaya penulisan ilmiah.", text: "Ubah teks ini menjadi bahasa akademik formal yang sesuai dengan standar penulisan jurnal internasional: [TEMPEL TEKS]." },
             { id: 3, title: "Simulasi Sidang Skripsi", cat: "Presentasi", icon: "user-graduate", desc: "Latihan menjawab pertanyaan sulit dari penguji.", text: "Bertindaklah sebagai dosen penguji skripsi kritis yang ahli di bidang ini. Topik saya: [JUDUL]. Berikan 5 pertanyaan paling menyulitkan." },
             { id: 4, title: "Debugging Kode Python", cat: "Coding", icon: "code", desc: "Menjelaskan penyebab error dan solusinya.", text: "Tolong analisis dan jelaskan error pada kode Python ini: [TEMPEL KODE]. Berikan penjelasan baris demi baris tentang apa yang salah." },
-            { id: 5, title: "Outline Presentasi Keren", cat: "Presentasi", icon: "chalkboard-teacher", desc: "Struktur slide yang logis dan persuasif.", text: "Buat outline presentasi 10 slide tentang [TOPIK]. Sertakan poin utama tiap slide, saran visual, dan naskah singkat untuk pembicara." }
+            { id: 5, title: "Outline Presentasi Keren", cat: "Presentasi", icon: "chalkboard-teacher", desc: "Struktur slide yang logis dan persuasif.", text: "Buat outline presentasi 10 slide tentang [TOPIK]. Sertakan poin utama tiap slide, saran visual, dan naskah singkat untuk pembicara." },
+            { id: 6, title: "Identifikasi Research Gap", cat: "Riset", icon: "search", desc: "Menemukan celah penelitian dari studi sebelumnya.", text: "Analisis ringkasan penelitian berikut: [TEMPEL RINGKASAN]. Identifikasi research gap, keterbatasan studi, dan peluang penelitian lanjutan yang relevan." },
+            { id: 7, title: "Perumusan Masalah Penelitian", cat: "Riset", icon: "question-circle", desc: "Menyusun rumusan masalah yang tajam dan sistematis.", text: "Berdasarkan latar belakang berikut: [TEMPEL LATAR BELAKANG], susun rumusan masalah utama dan sub-masalah secara sistematis dan terukur." },
+            { id: 8, title: "Penyusunan Hipotesis", cat: "Riset", icon: "chart-line", desc: "Menyusun hipotesis penelitian kuantitatif.", text: "Variabel X: [ISI]. Variabel Y: [ISI]. Susun H0 dan H1 lengkap dengan dasar teori dan arah hubungan variabel." },
+            { id: 9, title: "Kerangka Teori", cat: "Riset", icon: "project-diagram", desc: "Menyusun landasan teori penelitian.", text: "Buatkan kerangka teori untuk judul penelitian: [JUDUL]. Sertakan teori utama, konsep variabel, dan hubungan antar variabel." },
+            { id: 10, title: "Metodologi Penelitian", cat: "Riset", icon: "flask", desc: "Menentukan metode penelitian yang sesuai.", text: "Judul penelitian: [JUDUL]. Rancang metodologi meliputi pendekatan, populasi & sampel, teknik pengumpulan data, dan teknik analisis data." },
+            { id: 11, title: "Operasionalisasi Variabel", cat: "Riset", icon: "table", desc: "Menjabarkan variabel menjadi indikator terukur.", text: "Variabel penelitian: [ISI]. Buatkan tabel operasionalisasi variabel lengkap dengan definisi operasional dan indikator pengukuran." },
+            { id: 12, title: "Penyusunan Instrumen Penelitian", cat: "Riset", icon: "clipboard", desc: "Menyusun kuesioner atau instrumen wawancara.", text: "Buatkan 15 butir pertanyaan kuesioner untuk variabel: [ISI] menggunakan skala Likert 1-5." },
+            { id: 13, title: "Analisis Data Kuantitatif", cat: "Riset", icon: "calculator", desc: "Menentukan teknik analisis statistik.", text: "Jenis penelitian: [ISI]. Variabel: [ISI]. Tentukan teknik analisis statistik yang sesuai dan jelaskan alasannya." },
+            { id: 14, title: "Analisis Data Kualitatif", cat: "Riset", icon: "comments", desc: "Menentukan teknik analisis kualitatif.", text: "Topik penelitian: [ISI]. Jelaskan langkah analisis data kualitatif menggunakan pendekatan yang tepat." },
+            { id: 15, title: "State of The Art", cat: "Riset", icon: "book-open", desc: "Merangkum perkembangan penelitian terkini.", text: "Buatkan state of the art untuk topik: [TOPIK], rangkum tren penelitian 5–10 tahun terakhir secara sistematis." },
+            { id: 16, title: "Perbandingan Teori", cat: "Riset", icon: "balance-scale", desc: "Membandingkan dua teori utama.", text: "Bandingkan teori [TEORI 1] dan [TEORI 2] dalam konteks penelitian [TOPIK]. Jelaskan persamaan, perbedaan, dan relevansinya." },
+            { id: 17, title: "Justifikasi Metode", cat: "Riset", icon: "check-circle", desc: "Menjelaskan alasan pemilihan metode.", text: "Judul penelitian: [JUDUL]. Jelaskan alasan pemilihan metode penelitian yang digunakan secara akademik dan logis." },
+            { id: 18, title: "Desain Penelitian", cat: "Riset", icon: "drafting-compass", desc: "Merancang desain penelitian.", text: "Rancang desain penelitian untuk topik: [TOPIK], jelaskan alur penelitian dari awal hingga akhir." },
+            { id: 19, title: "Teknik Sampling", cat: "Riset", icon: "users", desc: "Menentukan teknik pengambilan sampel.", text: "Populasi penelitian: [ISI]. Tentukan teknik sampling yang tepat dan jelaskan alasannya." },
+            { id: 20, title: "Uji Validitas & Reliabilitas", cat: "Riset", icon: "shield-alt", desc: "Menjelaskan pengujian instrumen.", text: "Jelaskan prosedur uji validitas dan reliabilitas untuk instrumen penelitian kuantitatif secara sistematis." },
+            { id: 21, title: "Model Konseptual", cat: "Riset", icon: "sitemap", desc: "Menyusun model hubungan variabel.", text: "Buatkan model konseptual untuk penelitian dengan variabel: [ISI]. Jelaskan hubungan antar variabel." },
+            { id: 22, title: "Identifikasi Kontribusi Penelitian", cat: "Riset", icon: "star", desc: "Menjelaskan kontribusi akademik dan praktis.", text: "Judul penelitian: [JUDUL]. Jelaskan kontribusi teoritis dan praktis dari penelitian tersebut." },
+            { id: 23, title: "Analisis Keterbatasan Studi", cat: "Riset", icon: "exclamation-triangle", desc: "Mengidentifikasi batasan penelitian.", text: "Topik penelitian: [TOPIK]. Jelaskan kemungkinan keterbatasan penelitian dan saran perbaikan untuk studi selanjutnya." },
+            { id: 24, title: "Roadmap Penelitian", cat: "Riset", icon: "route", desc: "Menyusun peta penelitian jangka panjang.", text: "Buatkan roadmap penelitian 5 tahun untuk topik: [TOPIK], mulai dari penelitian dasar hingga pengembangan lanjutan." },
+            { id: 25, title: "Sintesis Literatur", cat: "Riset", icon: "layer-group", desc: "Menggabungkan beberapa hasil penelitian.", text: "Gabungkan temuan dari 5 penelitian tentang [TOPIK] menjadi sintesis literatur yang runtut dan kritis." }
         ];
 
         const contributors = [
@@ -265,8 +330,8 @@
             container.innerHTML = contributors.map(c => {
                 let badgeClass = "bg-blue-100 text-blue-700 border-blue-200";
                 let icon = "star";
-                if(c.level === "Hebat") { badgeClass = "bg-purple-100 text-purple-700 border-purple-200"; icon = "award"; }
-                if(c.level === "Super") { badgeClass = "bg-amber-100 text-amber-700 border-amber-200"; icon = "terminal"; }
+                if (c.level === "Hebat") { badgeClass = "bg-purple-100 text-purple-700 border-purple-200"; icon = "award"; }
+                if (c.level === "Super") { badgeClass = "bg-amber-100 text-amber-700 border-amber-200"; icon = "terminal"; }
 
                 return `
                     <div class="contributor-card bg-white p-6 rounded-3xl border border-slate-200 flex flex-col md:flex-row items-center gap-6 transition-all group">
@@ -308,7 +373,7 @@
         function switchTab(tab) {
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             document.getElementById(`tab-${tab}`).classList.add('active');
-            
+
             const navLib = document.getElementById('nav-library');
             const navCon = document.getElementById('nav-contributors');
             const heroTitle = document.getElementById('hero-title');
@@ -316,7 +381,7 @@
             const searchBox = document.getElementById('search-container');
             const badge = document.getElementById('hero-badge');
 
-            if(tab === 'contributors') {
+            if (tab === 'contributors') {
                 navLib.classList.replace('text-blue-600', 'text-slate-600');
                 navCon.classList.replace('text-slate-600', 'text-blue-600');
                 heroTitle.innerHTML = `Pahlawan di Balik <br><span class="text-amber-500">AkademikPrompt.</span>`;
@@ -372,4 +437,5 @@
         }
     </script>
 </body>
+
 </html>
